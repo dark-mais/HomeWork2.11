@@ -1,6 +1,5 @@
 package com.example.HomeWork21.controller;
 
-import com.example.HomeWork21.model.Busket;
 import com.example.HomeWork21.service.ShoppingCartService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +25,7 @@ public class ShoppingCartController {
     }
 
     @GetMapping("/get")
-    public List<Busket> getItems() {
+    public List<Integer> getItems() {
         return shoppingCartService.getItems();
     }
 }
