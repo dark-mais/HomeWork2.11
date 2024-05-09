@@ -1,8 +1,6 @@
 package com.example.HomeWork21.controller;
 
-import com.example.HomeWork21.model.ShoppingCart;
 import com.example.HomeWork21.service.ShoppingCartService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,18 +10,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/order")
-@RequiredArgsConstructor
+
 
 public class ShoppingCartController {
     private final ShoppingCartService shoppingCartService;
 
+    public ShoppingCartController(ShoppingCartService shoppingCartService) {
+        this.shoppingCartService = shoppingCartService;
+    }
+
     @GetMapping("/add")
-    public void add(@RequestParam String id) {
-        shoppingCartService.add(id);
+    public List<Integer> addItems(@RequestParam List<Integer> ids) {
+        return shoppingCartService.addItems(ids);
     }
 
     @GetMapping("/get")
-    public List<ShoppingCart> findAll() {
-        return shoppingCartService.findAll();
+    public List<Integer> getItems() {
+        return shoppingCartService.getItems();
     }
 }
